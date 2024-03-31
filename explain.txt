@@ -1,0 +1,121 @@
+# Hacker Brief
+
+### **Hackers' Guide: Gen AI for Gaming, Social, or Digital Entertainment**
+
+**Welcome, Hackers!**
+
+As you embark on the challenge to create the best AI use-case for Gaming, Social, or Digital Entertainment, this guide will provide you with a roadmap to navigate through the process of ideation to execution. Here’s how you can work towards developing a possible use-case:
+
+### Ideation and Conceptualization
+
+Begin by brainstorming ideas that align with the challenge directions. Whether it’s an AI companion for gamers, an AI-driven RPG, or an innovative social interaction tool, define the core functionality and unique selling proposition of your concept.
+
+### Choose Your AI Model
+
+You have two paths to choose from when it comes to AI models. We’d recommend using an open-source model for this challenge. Do take note of the model licenses - if you’re looking to further develop this idea for commercial use beyond this hackathon, you should check whether the model you’re using allows for that.
+
+- **Open-Source Models:** If you’re opting for an open-source model, look into platforms like Hugging Face or Virtual Protocol.
+- **Closed Models (OpenAI, etc.)**
+
+Resources: 
+
+https://huggingface.co/models
+
+*Recommended model to start finetuning*
+
+Mistral 7B - this is the base model created by Mistral, you can take any instruct dataset, pair with any prompt template to finetune. 
+
+https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1
+
+Llama 2 7b chat - this is the chat model finetuned by Llama 2, it is fine tuned with Llama2 chat template, so you would have to format your dataset into this prompt template before finetuning. 
+
+https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
+
+Apart from the said models, you can choose from a variety of community made models, like the popular silicon-maid, toppy, mythomax, spicyboros, dolphin, pygmalion etc. These models are either finetuned or merged, and you should take note of the base model and the prompt template used to finetune it. That way, you can format your dataset to the same prompt template to ensure consistency in performance. 
+
+### Fine-Tuning Model with Datasets
+
+Most open source based models provided by companies like Mistral or Meta are text completion model. It is not optimized for any conversational, or assistant mode. So a full parameter fine tuning on sets of instruction based dataset can tuned the model have conversational capabilities. Additional finetuning (LoRA), can help in obtaining more specific knowledge or context (e.g. about Dungeons & Dragons, Dota, Twitch slang, etc.) 
+
+- **Finding Datasets:** Websites like Hugging Face, Kaggle, UCI Machine Learning Repository, and Google Dataset Search are great starting points (again, take note of the licenses). An alternative is to create your own dataset, which you can accomplish through several ways [examples].
+- **Fine-Tuning:** Use the chosen dataset to fine-tune your model.
+
+Resources: 
+
+https://colab.research.google.com/drive/1PEQyJO1-f6j0S_XJ8DV50NkpzasXkrzd?usp=sharing
+
+https://colab.research.google.com/github/ashishpatel26/LLM-Finetuning/blob/main/7.FineTune_LLAMA2_with_QLORA.ipynb
+
+https://github.com/ashishpatel26/LLM-Finetuning/blob/main/2.Fine_Tune_Your_Own_Llama_2_Model_in_a_Colab_Notebook.ipynb
+
+### Quantizing Models
+
+Quantizing a model refers to the process of reducing the precision of the numbers used to represent a model's parameters. This is typically done by reducing the number of bits that represent each weight from 32-bit floating points to lower-precision formats like 16-bit integers.
+
+Resources
+
+https://mlabonne.github.io/blog/posts/Quantize_Llama_2_models_using_ggml.html
+
+https://colab.research.google.com/drive/1DPr4mUQ92Cc-xf4GgAaB6dFcFnWIvqYi?usp=sharing
+
+https://colab.research.google.com/drive/1pL8k7m04mgE5jo2NrjGi8atB0j_37aDD?usp=sharing
+
+### Prompt Engineering
+
+This is particularly relevant for generative AI models:
+
+- **Understanding Prompts:** Learn how to craft prompts that guide the AI in generating the desired output. This is an iterative process that often involves testing and refining.
+- **Best Practices:** Keep prompts clear, concise, and specific to your use-case. Use examples to guide the AI if possible.
+
+Resources: 
+
+https://wikia.schneedc.com/bot-creation/trappu/introduction
+
+https://www.promptingguide.ai/ (extremely comprehensive guide on prompt engineering)
+
+### Long term memory
+
+Long-term memory in Large Language Models (LLMs) refers to the ability of these models to retain and utilize information over extended interactions or throughout large documents. This capability is vital for maintaining context and coherence in conversations, understanding complex narratives, and referencing past information when making current predictions or generating text.
+
+To implement long-term memory, LLMs often use mechanisms such as attention mechanisms, memory networks, and recurrent neural network (RNN) architectures, including Long Short-Term Memory (LSTM) networks and Gated Recurrent Units (GRUs).
+
+Resources: 
+
+https://python.langchain.com/docs/modules/memory/
+
+https://colab.research.google.com/github/pinecone-io/examples/blob/master/docs/langchain-retrieval-agent.ipynb
+
+### Integration with Voice or Other Services
+
+Voice cloning is a technology that uses machine learning to generate a synthetic voice that is nearly indistinguishable from a target human voice. This hackathon challenge focuses on leveraging eXtended Text-to-Speech (XTTS) technology to create high-fidelity text-to-speech (TTS) models that can replicate a given voice.
+
+Resources:
+
+https://docs.coqui.ai/en/latest/models/xtts.html
+
+https://colab.research.google.com/drive/1GiI4_X724M8q2W-zZ-jXo7cWTV7RfaH-?usp=sharing
+
+https://huggingface.co/spaces/styletts2/styletts2
+
+*Guide to finetune Voice*
+
+We can use XTTSv2 to finetune a voice model. You can do it locally, or on cloud. 
+
+To do it locally, please follow the guide from coqui to set up your local environment. https://docs.coqui.ai/en/latest/tutorial_for_nervous_beginners.html
+
+- Please remember to install pytorch in your new virtual environment.
+https://pytorch.org/get-started/locally/
+- Run TTS/TTS/demos/xtts_ft_demo/xtts_demo.py
+- Follow the 3-step process in the webui. (Upload your voice sample, run finetune and inference)
+- Voice sample should only contain 1 speaker, at least 5min of clean speaking audio
+
+To run it on cloud, please check this notebook. 
+
+https://colab.research.google.com/drive/1GiI4_X724M8q2W-zZ-jXo7cWTV7RfaH-?usp=sharing
+
+### Building Your Prototype
+
+Develop a minimum viable product (MVP) that demonstrates the core functionality of your AI solution:
+
+- **Front-end Development:** If your solution has a UI, ensure it's user-friendly and accessible.
+- **Back-end Integration:** Ensure your AI model and any other services are integrated into the back-end.
